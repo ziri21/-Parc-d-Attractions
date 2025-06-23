@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "rideId": 1,
+    "employeeId": 2,
+    "date": "2025-06-24",
+    "description": "Vérification de sécurité de la montagne russe",
+    "status": "scheduled"
+  },
+  {
+    "id": 2,
+    "rideId": 1,
+    "employeeId": 2,
+    "date": "2025-06-24",
+    "description": "Démarrage de la réparation du manège",
+    "status": "in progress"
+  }
+]

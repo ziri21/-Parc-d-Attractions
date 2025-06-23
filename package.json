@@ -1,0 +1,71 @@
+{
+  
+
+  "name": "thrillworld-api",
+  
+
+  "version": "1.0.0",
+  
+
+  "main": "server.js",
+  
+
+  "scripts": {
+  
+
+    
+
+  "start": "node server.js",
+  
+
+    
+
+  "dev": "nodemon server.js"
+  
+
+  },
+  
+
+  "dependencies": {
+  
+
+    
+
+  "body-parser": "^1.20.3",
+  
+
+    
+
+  "express": "^4.21.2",
+  
+
+    
+
+  "express-validator": "^7.2.1"
+  
+
+  },
+  
+
+  "description": "API RESTful pour la gestion d’un parc d’attractions.",
+  
+
+  "keywords": [],
+  
+
+  "author": "",
+  
+
+  "license": "ISC",
+  
+
+  "devDependencies": {
+  
+
+    
+
+  "nodemon": "^3.1.10"
+  
+
+  }
+}
