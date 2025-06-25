@@ -4,7 +4,7 @@ const Employee = require('../models/Employee');
 
 const dataPath = path.join(__dirname, '../data/employees.json');
 
-// Charger les employés depuis le fichier JSON
+// Charger les employés
 function loadEmployees() {
   if (fs.existsSync(dataPath)) {
     const data = fs.readFileSync(dataPath);
@@ -13,77 +13,71 @@ function loadEmployees() {
   return [];
 }
 
-// Sauvegarder les employés dans le fichier JSON
+// Sauvegarder les employés
 function saveEmployees(employees) {
   fs.writeFileSync(dataPath, JSON.stringify(employees, null, 2));
 }
 
 // Générer un nouvel ID
-function getNextId(employees) {
-  return employees.length > 0 ? Math.max(...employees.map(e => e.id)) + 1 : 1;
+function getNextId(data) {
+  return data.length > 0 ? Math.max(...data.map(e => e.id)) + 1 : 1;
 }
 
-// Créer un employé
+// POST /api/employees
 const createEmployee = (req, res) => {
   const { name, position, department } = req.body;
   if (!name || !position || !department) {
     return res.status(400).json({ error: "Tous les champs sont requis." });
   }
 
-  const employees = loadEmployees();
-  const id = getNextId(employees);
+  const data = loadEmployees();
+  const id = getNextId(data);
   const employee = new Employee(id, name, position, department);
-  employees.push(employee);
-  saveEmployees(employees);
+  data.push(employee);
+  saveEmployees(data);
   res.status(201).json(employee);
 };
 
-// Obtenir tous les employés
+// GET /api/employees
 const getAllEmployees = (req, res) => {
-  const employees = loadEmployees();
-  res.json(employees);
+  const data = loadEmployees();
+  res.json(data);
 };
 
-// Obtenir un employé par ID
+// GET /api/employees/:id
 const getEmployeeById = (req, res) => {
   const id = parseInt(req.params.id);
-  const employees = loadEmployees();
-  const employee = employees.find(e => e.id === id);
-  if (!employee) {
-    return res.status(404).json({ error: "Employé non trouvé." });
-  }
+  const data = loadEmployees();
+  const employee = data.find(e => e.id === id);
+  if (!employee) return res.status(404).json({ error: "Employé non trouvé." });
   res.json(employee);
 };
 
-// Mettre à jour un employé
+// PUT /api/employees/:id
 const updateEmployee = (req, res) => {
   const id = parseInt(req.params.id);
-  const employees = loadEmployees();
-  const index = employees.findIndex(e => e.id === id);
-  if (index === -1) {
-    return res.status(404).json({ error: "Employé non trouvé." });
-  }
+  const data = loadEmployees();
+  const index = data.findIndex(e => e.id === id);
+  if (index === -1) return res.status(404).json({ error: "Employé non trouvé." });
 
   const { name, position, department } = req.body;
-  if (name) employees[index].name = name;
-  if (position) employees[index].position = position;
-  if (department) employees[index].department = department;
+  if (name) data[index].name = name;
+  if (position) data[index].position = position;
+  if (department) data[index].department = department;
 
-  saveEmployees(employees);
-  res.json(employees[index]);
+  saveEmployees(data);
+  res.json(data[index]);
 };
 
-// Supprimer un employé
+// DELETE /api/employees/:id
 const deleteEmployee = (req, res) => {
   const id = parseInt(req.params.id);
-  let employees = loadEmployees();
-  const index = employees.findIndex(e => e.id === id);
-  if (index === -1) {
-    return res.status(404).json({ error: "Employé non trouvé." });
-  }
+  const data = loadEmployees();
+  const index = data.findIndex(e => e.id === id);
+  if (index === -1) return res.status(404).json({ error: "Employé non trouvé." });
 
-  employees.splice(index, 1);
-  saveEmployees(employees);
+  data.splice(index, 1);
+  saveEmployees(data);
   res.json({ message: "Employé supprimé avec succès." });
 };
 
