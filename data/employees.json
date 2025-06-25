@@ -1,22 +1,8 @@
-[{
-  "name": "Amine Bensalem",
-  "position": "Technicien",
-  "department": "Maintenance"
-}
-,{
-  "name": "Lina Ouali",
-  "position": "Agent d'accueil",
-  "department": "Accueil"
-},{
-  "name": "Yassine Mekki",
-  "position": "Sécurité",
-  "department": "Sécurité"
-},
-{
-  "name": "Sara Benali",
-  "position": "Opératrice de manège",
-  "department": "Attractions"
-}
-
-
+[
+  {
+    "id": 1,
+    "name": "Amine Bensalem",
+    "position": "Technicien",
+    "department": "Maintenance"
+  }
 ]

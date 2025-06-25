@@ -1,12 +1,30 @@
 const express = require('express');
 const router = express.Router();
-const employeeController = require('../controllers/employeeController');
+const {
+  createEmployee,
+  getAllEmployees,
+  getEmployeeById,
+  updateEmployee,
+  deleteEmployee
+} = require('../controllers/employeeController');
 
-// Routes RESTful pour Employee
-router.post('/employees', employeeController.createEmployee);
-router.get('/employees', employeeController.getAllEmployees);
-router.get('/employees/:id', employeeController.getEmployeeById);
-router.put('/employees/:id', employeeController.updateEmployee);
-router.delete('/employees/:id', employeeController.deleteEmployee);
+const { validateEmployee } = require('../validators/employeeValidator');
+const { validationResult } = require('express-validator');
+
+// Middleware de gestion des erreurs de validation
+const handleValidation = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  next();
+};
+
+// Routes
+router.post('/employees', validateEmployee, handleValidation, createEmployee);
+router.get('/employees', getAllEmployees);
+router.get('/employees/:id', getEmployeeById);
+router.put('/employees/:id', validateEmployee, handleValidation, updateEmployee);
+router.delete('/employees/:id', deleteEmployee);
 
 module.exports = router;

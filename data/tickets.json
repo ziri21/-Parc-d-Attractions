@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "visitorId": 1,
+    "type": "vip",
+    "price": 49.99,
+    "purchaseDate": "2025-06-25T10:00:00.000Z",
+    "validUntil": "2025-06-30T23:59:59.000Z"
+  },
+  {
+    "id": 2,
+    "visitorId": 1,
+    "type": "vip",
+    "price": 49.99,
+    "purchaseDate": "2025-06-25T10:00:00.000Z",
+    "validUntil": "2025-06-30T23:59:59.000Z"
+  }
+]
