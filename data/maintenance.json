@@ -14,5 +14,13 @@
     "date": "2025-06-24",
     "description": "Démarrage de la réparation du manège",
     "status": "in progress"
+  },
+  {
+    "id": 3,
+    "rideId": 2,
+    "employeeId": 1,
+    "date": "2025-07-01T00:00:00.000Z",
+    "description": "Vérification des freins",
+    "status": "scheduled"
   }
 ]

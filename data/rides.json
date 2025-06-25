@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "Tour de l'espace",
+    "capacity": 40,
+    "minHeight": 120,
+    "duration": 90,
+    "status": "operational"
+  },
+  {
+    "id": 2,
+    "name": "Tour de l'espace",
+    "capacity": "40",
+    "minHeight": 120,
+    "duration": 90,
+    "status": "operational"
+  }
+]

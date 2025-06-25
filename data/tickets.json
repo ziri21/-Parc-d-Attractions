@@ -14,5 +14,13 @@
     "price": 49.99,
     "purchaseDate": "2025-06-25T10:00:00.000Z",
     "validUntil": "2025-06-30T23:59:59.000Z"
+  },
+  {
+    "id": 3,
+    "visitorId": 5,
+    "type": "day",
+    "price": 19.99,
+    "purchaseDate": "2025-06-25",
+    "validUntil": "2025-06-26"
   }
 ]
